@@ -2,7 +2,6 @@ import Pagination from "@components/ui/pagination";
 import Image from "next/image";
 import { Table } from "@components/ui/table";
 import ActionButtons from "@components/common/action-buttons";
-import { siteSettings } from "@settings/site.settings";
 import { UserPaginator, SortOrder } from "src/types/generated";
 import { useMeQuery } from "@data/user/use-me.query";
 import { useTranslation } from "next-i18next";
@@ -54,7 +53,7 @@ const CustomerList = ({ customers, onPagination, onSort, onOrder }: IProps) => {
       width: 74,
       render: (profile: any, record: any) => (
         <Image
-          src={profile?.avatar?.thumbnail ?? siteSettings.avatar.placeholder}
+          src={profile?.avatar?.thumbnail ?? "/images/hero/avtar.svg"}
           alt={record?.name}
           layout="fixed"
           width={42}
@@ -81,24 +80,24 @@ const CustomerList = ({ customers, onPagination, onSort, onOrder }: IProps) => {
       key: "available_wallet_points",
       align: alignLeft,
     },
-    {
-      title: (
-        <TitleWithSort
-          title={t("table:table-item-status")}
-          ascending={
-            sortingObj.sort === SortOrder.Asc &&
-            sortingObj.column === "is_active"
-          }
-          isActive={sortingObj.column === "is_active"}
-        />
-      ),
-      className: "cursor-pointer",
-      dataIndex: "is_active",
-      key: "is_active",
-      align: "center",
-      onHeaderCell: () => onHeaderClick("is_active"),
-      render: (is_active: boolean) => (is_active ? "Active" : "Inactive"),
-    },
+    // {
+    //   title: (
+    //     <TitleWithSort
+    //       title={t("table:table-item-status")}
+    //       ascending={
+    //         sortingObj.sort === SortOrder.Asc &&
+    //         sortingObj.column === "is_active"
+    //       }
+    //       isActive={sortingObj.column === "is_active"}
+    //     />
+    //   ),
+    //   className: "cursor-pointer",
+    //   dataIndex: "is_active",
+    //   key: "is_active",
+    //   align: "center",
+    //   onHeaderCell: () => onHeaderClick("is_active"),
+    //   render: (is_active: boolean) => (is_active ? "Active" : "Inactive"),
+    // },
     {
       title: t("table:table-item-actions"),
       dataIndex: "id",
@@ -128,7 +127,7 @@ const CustomerList = ({ customers, onPagination, onSort, onOrder }: IProps) => {
         <Table
           // @ts-ignore
           columns={columns}
-          emptyText={t("table:empty-table-data")}
+          // emptyText={t("table:empty-table-data")}
           data={data}
           rowKey="id"
           scroll={{ x: 800 }}
