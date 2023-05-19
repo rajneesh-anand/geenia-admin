@@ -4,7 +4,7 @@ import { Table } from "@components/ui/table";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Button from "@components/ui/button";
-import { siteSettings } from "@settings/site.settings";
+import { siteSettings } from "@settings/site-settings";
 import usePrice from "@utils/use-price";
 import { formatAddress } from "@utils/format-address";
 import ValidationError from "@components/ui/form-validation-error";
@@ -131,7 +131,7 @@ export default function RefundDetailsView({
       width: 70,
       render: (image: any) => (
         <Image
-          src={image?.thumbnail ?? siteSettings.product.placeholder}
+          src={image?.thumbnail ?? "/images/hero/avtar.svg"}
           alt="alt text"
           layout="fixed"
           width={50}

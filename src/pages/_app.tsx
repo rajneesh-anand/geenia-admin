@@ -1,6 +1,5 @@
 import "@assets/css/main.css";
 import "@assets/css/custom.css";
-
 import "react-toastify/dist/ReactToastify.css";
 
 import type { AppProps } from "next/app";
@@ -13,11 +12,10 @@ import {
   Hydrate,
   DehydratedState,
 } from "react-query";
-import * as gtag from "@utils/ga";
+
 import { ToastContainer } from "react-toastify";
 import { appWithTranslation } from "next-i18next";
 import { DefaultSeo } from "@components/seo/default-seo";
-import { getDirection } from "@utils/get-direction";
 
 type ExtendedAppProps<P = {}> = {
   dehydratedState?: DehydratedState;
@@ -39,22 +37,8 @@ const CustomApp = ({
     queryClientRef.current = new QueryClient();
   }
   const router = useRouter();
-  const dir = getDirection(router.locale);
-
-  useEffect(() => {
-    document.documentElement.dir = dir;
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events, dir]);
 
   const Layout = (Component as any).Layout || Noop;
-  const authenticationRequired =
-    (Component as any).authenticationRequired ?? false;
 
   return (
     <QueryClientProvider client={queryClientRef.current}>

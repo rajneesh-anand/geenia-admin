@@ -1,6 +1,6 @@
 import Pagination from "@components/ui/pagination";
 import Image from "next/image";
-import { siteSettings } from "@settings/site.settings";
+import { siteSettings } from "@settings/site-settings";
 import { ServicePaginator } from "src/types/generated";
 import Link from "@components/ui/link";
 import { EditIcon } from "@components/icons/edit copy";
@@ -54,10 +54,7 @@ const ServiceList = ({ services, onPagination }: IProps) => {
                     <tr key={index}>
                       <td>
                         <Image
-                          src={
-                            item?.image ??
-                            (siteSettings.product.placeholder as any)
-                          }
+                          src={item?.image ?? "/images/hero/avatar.svg"}
                           alt={item.name}
                           layout="fixed"
                           width={42}
@@ -112,7 +109,6 @@ const ServiceList = ({ services, onPagination }: IProps) => {
                         <Link
                           href={`/service/edit/${item.id}`}
                           className="text-base transition duration-200 hover:text-heading"
-                          title="Edit"
                         >
                           <EditIcon width={16} />
                         </Link>

@@ -32,13 +32,7 @@ const OrderList = ({ orders, onPagination }: IProps) => {
                   <th className="px-3 py-3 text-xs font-medium leading-4 tracking-wider text-left text-blue-600 uppercase border-b border-gray-200 bg-gray-50">
                     Email
                   </th>
-                  <th className="px-3 py-3 text-xs font-medium leading-4 tracking-wider text-left text-blue-600 uppercase border-b border-gray-200 bg-gray-50">
-                    Class
-                  </th>
 
-                  <th className="px-3 py-3 text-xs font-medium leading-4 tracking-wider text-left text-blue-600 uppercase border-b border-gray-200 bg-gray-50">
-                    Order Type
-                  </th>
                   <th className="px-3 py-3 text-xs font-medium leading-4 tracking-wider text-left text-blue-600 uppercase border-b border-gray-200 bg-gray-50">
                     Amount
                   </th>
@@ -81,20 +75,7 @@ const OrderList = ({ orders, onPagination }: IProps) => {
                           </div>
                         </div>
                       </td>
-                      <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
-                        <div className="flex items-center">
-                          <div className="text-sm font-medium leading-5 text-gray-900">
-                            {item.class}
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
-                        <div className="flex items-center">
-                          <div className="text-sm font-medium leading-5 text-gray-900">
-                            {item.planType ? item.planType : ""}
-                          </div>
-                        </div>
-                      </td>
+
                       <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
                         <div className="flex items-center">
                           <div className="text-sm font-medium leading-5 text-gray-900">
@@ -106,12 +87,12 @@ const OrderList = ({ orders, onPagination }: IProps) => {
                         <div className="flex items-center">
                           <div
                             className={
-                              item.paymentStatus === "success"
+                              item.orderStatus === "Created"
                                 ? "text-sm font-medium leading-5 text-green-600"
                                 : "text-sm font-medium leading-5 text-red-600"
                             }
                           >
-                            {item.paymentStatus}
+                            {item.orderStatus}
                           </div>
                         </div>
                       </td>
@@ -123,18 +104,6 @@ const OrderList = ({ orders, onPagination }: IProps) => {
           </div>
         </div>
       </div>
-
-      {/* {!!paginatorInfo.total && (
-        <div className="flex justify-end items-center">
-          <Pagination
-            total={paginatorInfo.total}
-            current={paginatorInfo.currentPage}
-            pageSize={paginatorInfo.perPage}
-            onChange={onPagination}
-            showLessItems
-          />
-        </div>
-      )} */}
     </>
   );
 };

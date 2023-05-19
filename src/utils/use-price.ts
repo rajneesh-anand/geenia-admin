@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { siteSettings } from "@settings/site.settings";
+import { siteSettings } from "@settings/site-settings";
 import { useSettings } from "@contexts/settings.context";
 export function formatPrice({
   amount,

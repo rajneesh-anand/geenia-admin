@@ -3,7 +3,7 @@ import Pagination from "@components/ui/pagination";
 import Image from "next/image";
 import { Table } from "@components/ui/table";
 import ActionButtons from "@components/common/action-buttons";
-import { siteSettings } from "@settings/site.settings";
+import { siteSettings } from "@settings/site-settings";
 import { useTranslation } from "next-i18next";
 import { useIsRTL } from "@utils/locals";
 import Badge from "@components/ui/badge/badge";
@@ -55,7 +55,7 @@ const ShopList = ({ shops, onPagination, onSort, onOrder }: IProps) => {
       width: 74,
       render: (logo: any, record: any) => (
         <Image
-          src={logo?.thumbnail ?? siteSettings.product.placeholder}
+          src={logo?.thumbnail ?? "/images/hero/avtar.svg"}
           alt={record?.name}
           layout="fixed"
           width={42}

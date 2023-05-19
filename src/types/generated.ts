@@ -84,6 +84,7 @@ export declare type PaginatorInfo = {
   total: Scalars["Int"];
 };
 export declare type Order = {
+  orderStatus: string;
   id: Scalars["ID"];
   tracking_number: Scalars["String"];
   customer_contact: Scalars["String"];
