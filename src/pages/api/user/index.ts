@@ -12,6 +12,7 @@ export default async function handler(
       },
     });
 
+    console.log(users);
     res.status(200).json({
       msg: "success",
       data: users,
