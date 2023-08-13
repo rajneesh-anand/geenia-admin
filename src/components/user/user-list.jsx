@@ -20,7 +20,7 @@ const UserList = ({ users, onPagination }) => {
       <div className="flex flex-col">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full overflow-hidden align-middle">
-            {data.length > 0 && (
+            {data && data.length > 0 && (
               <>
                 <table className="min-w-full">
                   <thead>
@@ -77,7 +77,7 @@ const UserList = ({ users, onPagination }) => {
                           <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div className="flex items-center">
                               <div className="text-sm font-medium leading-5 text-gray-900">
-                                {maskMobileNumber(item.mobile)}
+                                {item.mobile && maskMobileNumber(item.mobile)}
                               </div>
                             </div>
                           </td>
@@ -121,7 +121,7 @@ const UserList = ({ users, onPagination }) => {
               </>
             )}
 
-            {!!paginatorInfo.total && (
+            {paginatorInfo && !!paginatorInfo.total && (
               <div className="flex justify-end items-center  py-4 my-2">
                 <Pagination
                   total={paginatorInfo.total}

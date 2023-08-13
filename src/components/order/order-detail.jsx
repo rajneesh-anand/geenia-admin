@@ -8,8 +8,6 @@ const OrderDetail = ({ data }) => {
   const [error, setError] = useState(null);
 
   const updateOrderStatus = async (orderStatus) => {
-    console.log(orderStatus);
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NODE_API_SERVER}/order/status`,
@@ -42,57 +40,106 @@ const OrderDetail = ({ data }) => {
 
   return (
     <>
-      <div className="flex">
-        <div className="w-1/2">
-          <div className="flex">
-            <h3>Order Number</h3>
-            <h3>{data.orderNumber}</h3>
-          </div>
-          <div className="flex">
-            <h3>Customer Name</h3>
-            <h3>{data.name}</h3>
-          </div>
-          <div className="flex">
-            <h3>Customer Mobile</h3>
-            <h3>{data.mobile}</h3>
-          </div>
-          <div className="flex">
-            <h3>Customer Email</h3>
-            <h3>{data.email}</h3>
-          </div>
-          <div className="flex">
-            <h3>Customer Address</h3>
-            <h3>{data.address}</h3>
-          </div>
-          <div className="flex">
-            <h3>City</h3>
-            <h3>{data.city}</h3>
-          </div>
-          <div className="flex">
-            <h3>State</h3>
-            <h3>{data.state}</h3>
-          </div>
-          <div className="flex">
-            <h3>PIN Code</h3>
-            <h3>{data.pincode}</h3>
-          </div>
-        </div>
-        <div className="w-1/2">
-          <div className="flex">
-            <h3>Order Date</h3>
-            <h3> {dayjs(data.orderDate).format("DD/MM/YYYY")}</h3>
-          </div>
-          <div className="flex">
-            <h3>Shipping AMount</h3>
-            <h3>{data.shipping}</h3>
-          </div>
-          <div className="flex">
-            <h3>Total Amount</h3>
-            <h3>{data.totalAmount}</h3>
-          </div>
-        </div>
+      <div className="flex px-4 py-8">
+        <table className="w-3/4">
+          <tbody>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Order Number</h3>
+              </td>
+              <td>
+                <h3>{data.orderNumber}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Customer Name</h3>
+              </td>
+              <td>
+                <h3>{data.name}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Customer Mobile</h3>
+              </td>
+              <td>
+                <h3>{data.mobile}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Customer Email</h3>
+              </td>
+              <td>
+                <h3>{data.email}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Customer Address</h3>
+              </td>
+              <td>
+                <h3>{data.address}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">City</h3>
+              </td>
+              <td>
+                <h3>{data.city}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">State</h3>
+              </td>
+              <td>
+                <h3>{data.state}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3 className="font-semibold">Pincode</h3>
+              </td>
+              <td>
+                <h3>{data.pincode}</h3>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table className="w-1/4">
+          <tbody>
+            <tr>
+              <td className="text-right">
+                <h3 className="font-semibold">Order Date</h3>
+              </td>
+              <td className="text-right">
+                <h3> {dayjs(data.orderDate).format("DD/MM/YYYY")}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td className="text-right">
+                <h3 className="font-semibold">Shipping Amount</h3>
+              </td>
+              <td className="text-right">
+                <h3>{data.shipping}</h3>
+              </td>
+            </tr>
+            <tr>
+              <td className="text-right">
+                <h3 className="font-semibold">Total Amount</h3>
+              </td>
+              <td className="text-right">
+                <h3>{data.totalAmount}</h3>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row py-8">
         <table className="table-auto w-full">
           <thead>
             <tr>
@@ -144,7 +191,30 @@ const OrderDetail = ({ data }) => {
         </table>
       </div>
 
-      <div className="flex justify-end">
+      {message === "failed" && (
+        <div className="text-center pt-8">
+          <Alert
+            message={error}
+            variant="error"
+            closeable={true}
+            className="my-2"
+            onClose={() => setError(null)}
+          />
+        </div>
+      )}
+      {message === "success" && (
+        <div className="text-center pt-8">
+          <Alert
+            message={error}
+            variant="success"
+            closeable={true}
+            className="my-2"
+            onClose={() => setError(null)}
+          />
+        </div>
+      )}
+
+      <div className="flex justify-end pb-8">
         <button
           onClick={() => updateOrderStatus("Cancel")}
           className="px-8 py-1.5 bg-yellow text-white hover:bg-yellow/70"
@@ -157,26 +227,6 @@ const OrderDetail = ({ data }) => {
         >
           Dispatch Order
         </button>
-      </div>
-      <div className="text-center">
-        {message === "failed" && (
-          <Alert
-            message={error}
-            variant="error"
-            closeable={true}
-            className="my-2"
-            onClose={() => setError(null)}
-          />
-        )}
-        {message === "success" && (
-          <Alert
-            message={error}
-            variant="success"
-            closeable={true}
-            className="my-2"
-            onClose={() => setError(null)}
-          />
-        )}
       </div>
     </>
   );

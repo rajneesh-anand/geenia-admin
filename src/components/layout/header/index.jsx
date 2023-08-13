@@ -33,8 +33,8 @@ const Header = () => {
       <header
         className={`${
           sticky
-            ? "header-sticky"
-            : "py-[8px] border-b border-[#f0f0fe] bg-gray-100"
+            ? "header-sticky relative"
+            : " relative py-[8px] border-b border-[#f0f0fe] bg-gray-100"
         }`}
       >
         <Container className="flex items-center">

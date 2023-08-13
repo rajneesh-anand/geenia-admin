@@ -10,7 +10,7 @@ const OrderList = ({ orders, onPagination }) => {
       <div className="flex flex-col">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full overflow-hidden align-middle">
-            {data.length > 0 && (
+            {data && data.length > 0 && (
               <>
                 <table className="min-w-full">
                   <thead>
@@ -96,12 +96,12 @@ const OrderList = ({ orders, onPagination }) => {
                             </div>
                           </td>
 
-                          <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
+                          <td className="px-3 py-4 whitespace-no-wrap border-b border-gray-200 text-center">
                             {item.orderStatus != "Pending" && (
                               <div className="flex items-center">
                                 <Link
                                   href={`/order/${item.orderNumber}`}
-                                  className="px-8 py-1.5 bg-yellow text-white hover:bg-orange"
+                                  className="px-4 py-1.5 bg-yellow text-white hover:bg-orange"
                                 >
                                   View Order
                                 </Link>
@@ -115,8 +115,7 @@ const OrderList = ({ orders, onPagination }) => {
                 </table>
               </>
             )}
-
-            {!!paginatorInfo.total && (
+            {paginatorInfo && !!paginatorInfo.total && (
               <div className="flex justify-end items-center  py-4 my-2">
                 <Pagination
                   total={paginatorInfo.total}

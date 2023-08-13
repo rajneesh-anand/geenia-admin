@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "@components/ui/link";
 import PhoneIcon from "@assets/icons/phone";
+import UserIcon from "@assets/icons/user";
 import { useRouter } from "next/router";
+import OrderBox from "@assets/icons/order-box";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const { pathname } = useRouter();
@@ -37,17 +39,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     {
       title: "Users",
       href: "/",
-      icon: <PhoneIcon height={24} width={24} />,
+      icon: <UserIcon height={24} width={24} color="#FFFFFF" />,
     },
     {
       title: "Orders",
       href: "/orders",
-      icon: <PhoneIcon height={24} width={24} />,
+      icon: <OrderBox height={24} width={24} color="#FFFFFF" />,
     },
     {
       title: "Push Notification",
       href: "/notification",
-      icon: <PhoneIcon height={24} width={24} />,
+      icon: <PhoneIcon height={24} width={24} color="#FFFFFF" />,
     },
   ];
 

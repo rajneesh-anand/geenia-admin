@@ -6,6 +6,7 @@ import ErrorMessage from "@components/ui/error-message";
 import Loader from "@components/ui/loaders/spinner/spinner";
 import React, { useState } from "react";
 import { useOrdersQuery } from "@framework/order-query";
+import Seo from "@components/common/seo";
 
 const OrderList = dynamic(() => import("@components/order/order-list"));
 
@@ -31,6 +32,7 @@ export default function OrdersPage() {
 
   return (
     <>
+      <Seo title="Orders" description="Admin Dashboard" canonical="/orders" />
       <OrderList orders={data.orders} onPagination={handlePagination} />
     </>
   );

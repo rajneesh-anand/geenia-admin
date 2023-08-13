@@ -6,6 +6,7 @@ import ErrorMessage from "@components/ui/error-message";
 import Loader from "@components/ui/loaders/spinner/spinner";
 import { useUsersQuery } from "@framework/user-query";
 import React, { useState } from "react";
+import Seo from "@components/common/seo";
 
 const UserList = dynamic(() => import("@components/user/user-list"));
 
@@ -31,6 +32,7 @@ export default function HomePage() {
 
   return (
     <>
+      <Seo title="Dashboard" description="Admin Dashboard" canonical="/" />
       <UserList users={data.users} onPagination={handlePagination} />
     </>
   );
