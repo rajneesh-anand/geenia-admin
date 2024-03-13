@@ -1,39 +1,18 @@
 import Layout from "@components/layout";
+import axios from "axios";
 import { getSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import ErrorMessage from "@components/ui/error-message";
-import Loader from "@components/ui/loaders/spinner/spinner";
-import { useUsersQuery } from "@framework/user-query";
-import React, { useState } from "react";
 import Seo from "@components/common/seo";
+import dynamic from "next/dynamic";
 
-const UserList = dynamic(() => import("@components/user/user-list"));
+const UserList = dynamic(() => import("@components/user/user-list"), {
+  ssr: false,
+});
 
-export default function HomePage() {
-  const [page, setPage] = useState(1);
-  const { query } = useRouter();
-
-  const {
-    data,
-    isLoading: loading,
-    error,
-  } = useUsersQuery({
-    limit: 25,
-    page,
-    ...query,
-  });
-
-  if (loading) return <Loader text="Loading" />;
-  if (error) return <ErrorMessage message={error.message} />;
-  function handlePagination(current) {
-    setPage(current);
-  }
-
+export default function HomePage({ users }) {
   return (
     <>
-      <Seo title="Dashboard" description="Admin Dashboard" canonical="/" />
-      <UserList users={data.users} onPagination={handlePagination} />
+      <Seo title="Users" description="Admin Dashboard" canonical="/" />
+      <UserList data={users} />
     </>
   );
 }
@@ -51,8 +30,14 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   } else {
+    const { page } = ctx.query;
+    const pageNumber = page ? page : 1;
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_NODE_API_SERVER}/user/list?limit=50&page=${pageNumber}`
+    );
+
     return {
-      props: {},
+      props: { users: data.users },
     };
   }
 };

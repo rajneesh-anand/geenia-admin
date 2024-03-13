@@ -1,4 +1,3 @@
-import Logo from "@components/ui/logo";
 import { getSession } from "next-auth/react";
 import Seo from "@components/common/seo";
 
@@ -18,7 +17,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default function LoginVerify() {
+export default function SignInVerify() {
   return (
     <>
       <Seo
@@ -28,11 +27,9 @@ export default function LoginVerify() {
       />
       <div className="flex items-center justify-center h-screen bg-light ">
         <div className="m-auto max-w-md w-full bg-yellow/25 sm:shadow p-5 sm:p-8 rounded">
-          <div className="flex justify-center mb-2">
-            <Logo />
-          </div>
+        
           <h3 className="text-center text-green-700  mb-4 mt-4">
-            Login link has been sent to your email address !
+            Sign In link has been sent to your email address !
           </h3>
         </div>
       </div>

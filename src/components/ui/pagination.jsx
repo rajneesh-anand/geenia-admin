@@ -1,7 +1,7 @@
 import RCPagination from "rc-pagination";
-import { ArrowNext } from "@assets/icons/arrow-next";
-import { ArrowPrev } from "@assets/icons/arrow-prev";
-import localeInfo from "@components/ui/locale";
+import { ArrowNext } from "@components/icons/arrow-next";
+import { ArrowPrev } from "@components/icons/arrow-prev";
+import localeInfo from "@components/locale/en_US";
 import "rc-pagination/assets/index.css";
 
 const Pagination = (props) => {

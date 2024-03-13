@@ -3,12 +3,12 @@ import Head from "next/head";
 
 const Seo = ({ title, description, canonical, css, js, image }) => (
   <Head>
-    <title>{title}</title>
-    <meta name="description" content={description} />
     <meta
       name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1"
     />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
     <meta name="og:type" property="og:type" content="website" />
     <meta name="og:title" property="og:title" content={title} />
@@ -17,7 +17,11 @@ const Seo = ({ title, description, canonical, css, js, image }) => (
       property="og:description"
       content={description}
     />
-    <meta name="og:url" property="og:url" content={canonical} />
+    <meta
+      name="og:url"
+      property="og:url"
+      content={`${process.env.NEXTAUTH_URL}/${canonical}`}
+    />
     <meta property="og:site_name" content="tswan" />
     <meta
       property="og:image"
@@ -33,6 +37,10 @@ const Seo = ({ title, description, canonical, css, js, image }) => (
     <meta property="og:image:height" content="200" />
 
     <meta name="twitter:card" property="twitter:card" content="summary" />
+    <meta
+      name="twitter:url"
+      content={`${process.env.NEXTAUTH_URL}/${canonical}`}
+    />
     <meta name="twitter:title" property="twitter:title" content={title} />
     <meta
       name="twitter:description"
@@ -48,7 +56,9 @@ const Seo = ({ title, description, canonical, css, js, image }) => (
       content={`${process.env.NEXTAUTH_URL}/images/openGraph/og.png`}
     />
 
-    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && (
+      <link rel="canonical" href={`${process.env.NEXTAUTH_URL}/${canonical}`} />
+    )}
     {js && <script type="text/javascript" src={js}></script>}
   </Head>
 );

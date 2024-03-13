@@ -1,19 +1,19 @@
 import cn from "classnames";
 import { Disclosure, Transition } from "@headlessui/react";
-import ArrowDown from "@assets/icons/arrow-down";
+import ArrowDown from "@components/icons/arrow-down";
 
 export const Accordion = ({ item, variant = "gray" }) => {
   const { title, content } = item;
   return (
     <div className="w-full">
-      <div className="w-full mx-auto mb-4 shadow-category bg-skin-fill rounded group">
+      <div className="shadow-category bg-skin-fill group mx-auto mb-4 w-full rounded">
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex justify-between w-full px-5 py-4 2xl:px-6 2xl:py-6 text-base font-medium text-start text-skin-base focus:outline-none">
+              <Disclosure.Button className="text-skin-base flex w-full justify-between px-5 py-4 text-start text-base font-medium focus:outline-none 2xl:px-6 2xl:py-6">
                 <span
                   className={cn(
-                    "text-sm font-medium leading-relaxed text-heading pe-2",
+                    "text-heading pe-2 text-sm font-medium leading-relaxed",
                     {
                       "md:text-base": variant === "gray",
                       "md:text-base lg:text-lg": variant === "transparent",
@@ -23,8 +23,8 @@ export const Accordion = ({ item, variant = "gray" }) => {
                   {title}
                 </span>
                 <ArrowDown
-                  className={`text-xl lg:text-2xl text-skin-base text-opacity-60 group-hover:text-opacity-100 -mr-2 lg:-mr-1.5 flex-shrink-0 ${
-                    open ? "transform rotate-180" : ""
+                  className={`text-skin-base -mr-2 flex-shrink-0 text-xl text-opacity-60 group-hover:text-opacity-100 lg:-mr-1.5 lg:text-2xl ${
+                    open ? "rotate-180 transform" : ""
                   }`}
                 />
               </Disclosure.Button>
@@ -40,7 +40,7 @@ export const Accordion = ({ item, variant = "gray" }) => {
               >
                 {open && (
                   <Disclosure.Panel static>
-                    <div className="px-5 pb-4 2xl:pb-7  2xl:px-6  -mt-1 2xl:mt-0 leading-7 text-sm 2xl:text-15px  text-skin-base opacity-70">
+                    <div className="2xl:text-15px text-skin-base -mt-1  px-5  pb-4 text-sm leading-7 opacity-70 2xl:mt-0  2xl:px-6 2xl:pb-7">
                       {content}
                     </div>
                   </Disclosure.Panel>

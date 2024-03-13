@@ -1,10 +1,12 @@
 import Layout from "@components/layout";
 import axios from "axios";
 import GiftDetail from "@components/gift/gift-detail";
+import Seo from "@components/common/seo";
 
 export default function GiftDetailPage({ gift }) {
   return (
     <>
+      <Seo title="gift" description="Admin Dashboard" canonical="/" />
       <GiftDetail data={gift} />
     </>
   );

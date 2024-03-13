@@ -17,30 +17,30 @@ export default function NotificationPage() {
     formState: { errors },
   } = useForm();
 
-  async function onSubmit({ title, message }) {
-    // try {
-    //   const res = await fetch(
-    //     `${process.env.NEXT_PUBLIC_NODE_API_SERVER}/message/post-message`,
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       method: "POST",
-    //       body: JSON.stringify({ title: title, message: message }),
-    //     }
-    //   );
-    //   const result = await res.json();
-    //   if (res.status >= 400 && res.status < 600) {
-    //     throw new Error(result.message);
-    //   } else {
-    //     setMessage("success");
-    //     setError("Message sent successfully !");
-    //   }
-    // } catch (error) {
-    //   setMessage("failed");
-    //   setError(error.message);
-    //   console.log(error.message);
-    // }
+  async function onSubmit({ title, msgDescription }) {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_NODE_API_SERVER}/message/topic`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({ title: title, message: msgDescription }),
+        }
+      );
+      const result = await res.json();
+      if (res.status >= 400 && res.status < 600) {
+        throw new Error(result.message);
+      } else {
+        setMessage("success");
+        setError("Message sent successfully !");
+      }
+    } catch (error) {
+      setMessage("failed");
+      setError(error.message);
+      console.log(error.message);
+    }
   }
 
   return (
@@ -48,9 +48,18 @@ export default function NotificationPage() {
       <Seo
         title="Notification"
         description="Admin Dashboard"
-        canonical="/notification"
+        canonical="notification"
       />
-      <div className="mt-16">
+      <div className="mt-1">
+        {error && (
+          <Alert
+            message={error}
+            variant={message}
+            closeable={true}
+            className="my-3"
+            onClose={() => setError(null)}
+          />
+        )}
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="flex flex-col">
             <Input
@@ -70,35 +79,21 @@ export default function NotificationPage() {
               placeholder="write notification message here ..."
               className="mb-4"
               variant="outline"
-              {...register("message")}
-              error={errors.message?.message}
+              {...register("msgDescription", {
+                required: "message is required ! ",
+              })}
+              error={errors.msgDescription?.message}
             />
           </div>
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center w-full font-nunito px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-orange rounded-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-opacity-90"
-          >
-            Send Message
-          </button>
+          <div className="relative mt-4 text-center lg:text-end">
+            <button
+              type="submit"
+              className="whitespace-no-wrap rounded-sm bg-orange-500 px-4 py-1 text-base font-medium leading-6 text-white shadow-sm hover:bg-opacity-90 focus:outline-none"
+            >
+              Send Message
+            </button>
+          </div>
         </form>
-        {message === "failed" && (
-          <Alert
-            message={error}
-            variant="error"
-            closeable={true}
-            className="my-2"
-            onClose={() => setError(null)}
-          />
-        )}
-        {message === "success" && (
-          <Alert
-            message={error}
-            variant="success"
-            closeable={true}
-            className="my-2"
-            onClose={() => setError(null)}
-          />
-        )}
       </div>
     </>
   );
