@@ -8,32 +8,6 @@ import IconMenuComponents from "@components/icons/component-icon";
 
 export const sidebarNavItems = [
   {
-    title: "Users",
-    href: "/",
-    icon: <IconMenuUsers className="shrink-0 group-hover:!text-blue-400" />,
-  },
-  {
-    title: "Gifts",
-    href: "/gifts",
-    icon: <IconMenuWidgets className="shrink-0 group-hover:!text-primary" />,
-  },
-  {
-    title: "Push Notification",
-    href: "/notification",
-    icon: <IconMenuChat className="shrink-0 group-hover:!text-primary" />,
-  },
-  {
-    title: "Reward Calculation",
-    href: "/calculation",
-    icon: <IconDollar className="shrink-0 group-hover:!text-primary" />,
-  },
-
-  {
-    title: "Feedbacks",
-    href: "/feedbacks",
-    icon: <IconMenuNotes className="shrink-0 group-hover:!text-primary" />,
-  },
-  {
     title: "Blogs",
     href: "/blogs",
     icon: <IconMenuForms className="shrink-0 group-hover:!text-primary" />,
@@ -47,6 +21,17 @@ export const sidebarNavItems = [
         href: "/blogs",
       },
     ],
+  },
+
+  {
+    title: "Feedbacks",
+    href: "/feedbacks",
+    icon: <IconMenuNotes className="shrink-0 group-hover:!text-primary" />,
+  },
+  {
+    title: "Orders",
+    href: "/orders",
+    icon: <IconMenuWidgets className="shrink-0 group-hover:!text-primary" />,
   },
   {
     title: "Products",
@@ -62,6 +47,32 @@ export const sidebarNavItems = [
         href: "/products",
       },
     ],
+  },
+  {
+    title: "Users",
+    href: "/",
+    icon: <IconMenuUsers className="shrink-0 group-hover:!text-blue-400" />,
+  },
+
+  {
+    title: "Settings",
+    href: "/settings",
+    icon: <IconMenuChat className="shrink-0 group-hover:!text-primary" />,
+    subMenu: [
+      {
+        title: "Add Account",
+        href: "/accounts/create",
+      },
+      {
+        title: "Account List",
+        href: "/accounts",
+      },
+    ],
+  },
+  {
+    title: "Reward Calculation",
+    href: "/calculation",
+    icon: <IconDollar className="shrink-0 group-hover:!text-primary" />,
   },
 ];
 
@@ -102,25 +113,6 @@ export const productCategoryOptions = [
   {
     label: "Fragrance",
     value: "Fragrance",
-  },
-];
-
-export const productSubCategoryOptions = [
-  {
-    label: "All",
-    value: "All",
-  },
-  {
-    label: "Toys",
-    value: "Toys",
-  },
-  {
-    label: "Beauty & Fashion",
-    value: "Beauty & Fashion",
-  },
-  {
-    label: "Electronics & Electrical",
-    value: "Electronics & Electrical",
   },
 ];
 
@@ -177,6 +169,161 @@ export const marketPlaceOptions = [
   {
     label: "Ozon",
     value: "Ozon",
+  },
+];
+
+export const productSubCategoryOptions = [
+  {
+    label: "Body Butter",
+    value: "Body Butter",
+  },
+  {
+    label: "Body Cleaners",
+    value: "Body Cleaners",
+  },
+  {
+    label: "Body Lotion",
+    value: "Body Lotion",
+  },
+  {
+    label: "Body Mist",
+    value: "Body Mist",
+  },
+  {
+    label: "Body Oils",
+    value: "Body Oils",
+  },
+  {
+    label: "Body Scrubs",
+    value: "Body Scrubs",
+  },
+  {
+    label: "Body Yogurts",
+    value: "Body Yogurts",
+  },
+  {
+    label: "Conditioners",
+    value: "Conditioners",
+  },
+  {
+    label: "Deo Pi Cream",
+    value: "Deo Pi Cream",
+  },
+  {
+    label: "Damaged Hair",
+    value: "Damaged Hair",
+  },
+  {
+    label: "Dandruff",
+    value: "Dandruff",
+  },
+  {
+    label: "Eau De Perfumes",
+    value: "Eau De Perfumes",
+  },
+  {
+    label: "Eyeliner",
+    value: "Eyeliner",
+  },
+  {
+    label: "Eyebrow Definer",
+    value: "Eyebrow Definer",
+  },
+  {
+    label: "Face Mask",
+    value: "Face Mask",
+  },
+  {
+    label: "Face Moisturizer",
+    value: "Face Moisturizer",
+  },
+  {
+    label: "Face Scrub",
+    value: "Face Scrub",
+  },
+  {
+    label: "Face Wash",
+    value: "Face Wash",
+  },
+  {
+    label: "Foot Cream",
+    value: "Foot Cream",
+  },
+  {
+    label: "Frizz",
+    value: "Frizz",
+  },
+  {
+    label: "Gift Sets",
+    value: "Gift Sets",
+  },
+  {
+    label: "Hand Cream",
+    value: "Hand Cream",
+  },
+  {
+    label: "Hair fall",
+    value: "Hair fall",
+  },
+  {
+    label: "Hair Mask",
+    value: "Hair Mask",
+  },
+  {
+    label: "Hair Serum",
+    value: "Hair Serum",
+  },
+  {
+    label: "Kajals",
+    value: "Kajals",
+  },
+
+  {
+    label: "Lipstick",
+    value: "Lipstick",
+  },
+  {
+    label: "Lip Balm",
+    value: "Lip Balm",
+  },
+  {
+    label: "Lip Care",
+    value: "Lip Care",
+  },
+
+  {
+    label: "Lip & Cheek Tint",
+    value: "Lip & Cheek Tint",
+  },
+  {
+    label: "Lip Scrub",
+    value: "Lip Scrub",
+  },
+  {
+    label: "Mascara",
+    value: "Mascara",
+  },
+  {
+    label: "Nail Polish",
+    value: "Nail Polish",
+  },
+
+  {
+    label: "Serum Face Oil",
+    value: "Serum Face Oil",
+  },
+
+  {
+    label: "Sunscreen",
+    value: "Sunscreen",
+  },
+  {
+    label: "Shampoo",
+    value: "Shampoo",
+  },
+  {
+    label: "Scalp Serum",
+    value: "Scalp Serum",
   },
 ];
 

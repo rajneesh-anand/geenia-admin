@@ -1,14 +1,14 @@
 {
-  "name": "Яша",
-  "short_name": "Яша",
-  "start_url": "https://admin.yasha64.ru",
+  "name": "Geenia Admin",
+  "short_name": "GA",
+  "start_url": "https://admin.geenia.in",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f57c00",
   "theme_color": "#f57c00",
   "categories": ["shop", "ecommerce"],
   "orientation": "portrait",
-  "description": "Yasha App",
+  "description": "Geenia Admin App",
 
   "icons": [
     {
