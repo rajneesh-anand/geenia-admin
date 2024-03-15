@@ -1,5 +1,5 @@
 import IconMenuUsers from "@components/icons/menu-users";
-import IconMenuChat from "@components/icons/menu-chat";
+import IconSettings from "@components/icons/settings-icon";
 import IconDollar from "@components/icons/dollar-icon";
 import IconMenuForms from "@components/icons/form-icon";
 import IconMenuWidgets from "@components/icons/widget-icon";
@@ -57,7 +57,7 @@ export const sidebarNavItems = [
   {
     title: "Settings",
     href: "/settings",
-    icon: <IconMenuChat className="shrink-0 group-hover:!text-primary" />,
+    icon: <IconSettings className="shrink-0 group-hover:!text-primary" />,
     subMenu: [
       {
         title: "Add Account",
@@ -68,11 +68,6 @@ export const sidebarNavItems = [
         href: "/accounts",
       },
     ],
-  },
-  {
-    title: "Reward Calculation",
-    href: "/calculation",
-    icon: <IconDollar className="shrink-0 group-hover:!text-primary" />,
   },
 ];
 
