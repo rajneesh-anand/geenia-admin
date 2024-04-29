@@ -17,3 +17,13 @@ export const http = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export function makeRequest(url, options) {
+  return http(url, options)
+    .then((res) => {
+      return res.data.data;
+    })
+    .catch((error) =>
+      Promise.reject(error?.response?.data?.message ?? "Error")
+    );
+}

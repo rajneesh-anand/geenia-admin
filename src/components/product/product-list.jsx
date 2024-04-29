@@ -1,6 +1,6 @@
 import { DataTable } from "mantine-datatable";
 import React, { useEffect, useState } from "react";
-import useAxiosAuth from "@framework/useAxiosAuth";
+import useAxiosAuth from "@framework/api-request";
 import { Box, Group } from "@mantine/core";
 import Link from "next/link";
 import EditIcon from "@components/icons/edit-icon";

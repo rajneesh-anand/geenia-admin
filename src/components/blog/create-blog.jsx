@@ -33,6 +33,9 @@ export default function AddBlogForm() {
   async function onSubmit({ title, description }) {
     setProcessingStatus(true);
     try {
+      const cat = category.map((item) => item.label);
+      const subCat = subCategory.map((item) => item.label);
+
       const formData = new FormData();
       formData.append("image", blogImage);
       formData.append("title", title);
@@ -45,10 +48,10 @@ export default function AddBlogForm() {
           lower: true,
         })
       );
-      formData.append("category", JSON.stringify(category));
-      formData.append("subCategory", JSON.stringify(subCategory));
+      formData.append("category", JSON.stringify(cat));
+      formData.append("subCategory", JSON.stringify(subCat));
       formData.append("content", content);
-      formData.append("author", session?.user?.mobile);
+      formData.append("author", session?.user?.email);
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NODE_API_SERVER}/post/create`,
@@ -160,7 +163,7 @@ export default function AddBlogForm() {
             options={blogCategory}
             isSearchable={false}
             onChange={(value) => setCategory(value)}
-            isMulti={false}
+            isMulti={true}
           />
         </div>
         <div className="mb-2 flex flex-col items-center justify-between md:flex-row">

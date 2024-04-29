@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { http } from "./axios";
+import { http } from "./http";
 
-const useAxiosAuth = () => {
+const useApiRequest = () => {
   const { data: session } = useSession();
   useEffect(() => {
     const requestIntercept = http.interceptors.request.use((config) => {
@@ -19,4 +19,4 @@ const useAxiosAuth = () => {
   return http;
 };
 
-export default useAxiosAuth;
+export default useApiRequest;
